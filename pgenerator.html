@@ -15,6 +15,14 @@
     <btn></btn>
     <script type="text/javascript">
       // prompt for length of password 8-128 characters
+      // If x is Not a Number or less than 8 or greater than 128
+      var pLengIn = prompt("how long would you like your password to be?");
+
+      var lengValid = function (pLengIn) {
+        if (isNaN(pLengIn) || pLengIn < 8 || pLengIn > 128) {
+          alert("Input not valid");
+        }
+      };
       // *prompts for character types to include:
       // *upper case
       // *lower case
