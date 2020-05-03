@@ -114,9 +114,26 @@
           var charNum = Math.floor(Math.random() * characters.length);
           // which specialNum to use
           var specialNUm = Math.floor(Math.random() * specialCharacters.length);
+          //Select the choice to use
+          var choice = Math.floor(Math.random() * choices.length);
+
+          // Select the character according to the choice
+          if (choices[choice] === "l") {
+            password += characters[charNum].toLowerCase();
+          }
+          if (choices[choice] === "u") {
+            password += characters[charNum];
+          }
+          if (choices[choice] === "s") {
+            password += specialCharacters[specialNUm];
+          }
+          if (choices[choice] === "n") {
+            var num = Math.floor(Math.random() * 10);
+            password += num;
+          }
         }
+        return password;
       };
-      var num = Math.floor(Math.random() * 10);
 
       // *prompts for character types to include:
       // *upper case
