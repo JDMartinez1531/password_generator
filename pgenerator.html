@@ -109,8 +109,13 @@
         if (spChar) {
           choices.push("s");
         }
+        for (i = 0; i < parseInt(pLengIn); i++) {
+          //which character to use
+          var charNum = Math.floor(Math.random() * characters.length);
+          // which specialNum to use
+          var specialNUm = Math.floor(Math.random() * specialCharacters.length);
+        }
       };
-
       var num = Math.floor(Math.random() * 10);
 
       // *prompts for character types to include:
