@@ -19,9 +19,14 @@
 
       var lengValid = function () {
         let uCase, loCase, numbers, spChar, pLengIn;
-        pLengIn = prompt("how long would you like your password to be?");
-        if (isNaN(pLengIn) || pLengIn < 8 || pLengIn > 128) {
-          alert("please select a length between 8 and 128 characters");
+        var isValidLength = false;
+        while (isValidLength === false) {
+          pLengIn = prompt("how long would you like your password to be?");
+          isValidLength = true;
+          if (isNaN(pLengIn) || pLengIn < 8 || pLengIn > 128) {
+            alert("please select a length between 8 and 128 characters");
+            isValidLength = false;
+          }
         }
         numbers = confirm("would you like to include numbers?");
         uCase = confirm("would you like to include upper case?");
