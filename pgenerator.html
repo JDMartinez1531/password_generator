@@ -96,6 +96,19 @@
           "~",
         ];
         var choices = [];
+        // check for symbols to include
+        if (loCase) {
+          choices.push("l");
+        }
+        if (uCase) {
+          choices.push("u");
+        }
+        if (numbers) {
+          choices.push("n");
+        }
+        if (spChar) {
+          choices.push("s");
+        }
       };
 
       var num = Math.floor(Math.random() * 10);
