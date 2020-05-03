@@ -9,7 +9,7 @@
   <body>
     <!-- add css maybe just bold and centered -->
     <h1>Password Generator</h1>
-    <!-- make a box that says "Your Password" -->
+    <!-- make a box that displays "Your Password" -->
     <div id="thebox">your secure password</div>
     <!-- button that runs the script -->
     <btn onclick="lengValid()">Click here to get your password </btn>
@@ -28,7 +28,7 @@
         loCase = confirm("would you like to include lower case?");
         spChar = confirm("would you like to include special characters?");
         var password = pgenerator(pLengIn, loCase, uCase, numbers, spChar);
-        alert(password);
+        document.getElementById("thebox").innerHTML = password;
       };
       var pgenerator = function (pLengIn, loCase, uCase, numbers, spChar) {
         var password = "";
