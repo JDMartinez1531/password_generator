@@ -1,139 +1,145 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="assets\styles.css" />
-    <title>Password Generator</title>
-  </head>
-  <!-- responsive? -->
-  <body>
-    <!-- add css maybe just bold and centered -->
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="assets\styles.css" />
+  <title>Password Generator</title>
+</head>
+
+<body>
+  <div class="containerMain">
     <h1>Password Generator</h1>
     <!-- make a box that displays "Your Password" -->
-    <div id="thebox">your secure password</div>
+    <div id="thebox" class="card">
+      <div class="container">
+        <p id="passBox">your secure password</p>
+      </div>
+    </div>
     <!-- button that runs the script -->
-    <btn onclick="lengValid()">Click here to get your password </btn>
-    <script type="text/javascript">
-      // prompt for length of password 8-128 characters, if not valid, alert, start over
-      var lengValid = function () {
-        let uCase, loCase, numbers, spChar, pLengIn;
-        var isValidLength = false;
-        while (isValidLength === false) {
-          // If pLengIn is Not a Number or less than 8 or greater than 128
-          pLengIn = prompt("how long would you like your password to be?");
-          isValidLength = true;
-          if (isNaN(pLengIn) || pLengIn < 8 || pLengIn > 128) {
-            alert("please select a length between 8 and 128 characters");
-            isValidLength = false;
-          }
+    <btn id="start-button" onclick="lengValid()">Click here to get your password </btn>
+  </div>
+  <script type="text/javascript">
+    // prompt for length of password 8-128 characters, if not valid, alert, start over
+    var lengValid = function () {
+      let uCase, loCase, numbers, spChar, pLengIn;
+      var isValidLength = false;
+      while (isValidLength === false) {
+        // If pLengIn is Not a Number or less than 8 or greater than 128
+        pLengIn = prompt("how long would you like your password to be?");
+        isValidLength = true;
+        if (isNaN(pLengIn) || pLengIn < 8 || pLengIn > 128) {
+          alert("please select a length between 8 and 128 characters");
+          isValidLength = false;
         }
-        numbers = confirm("would you like to include numbers?");
-        uCase = confirm("would you like to include upper case?");
-        loCase = confirm("would you like to include lower case?");
-        spChar = confirm("would you like to include special characters?");
-        var password = pgenerator(pLengIn, loCase, uCase, numbers, spChar);
-        document.getElementById("thebox").innerHTML = password;
-      };
-      var pgenerator = function (pLengIn, loCase, uCase, numbers, spChar) {
-        var password = "";
-        var characters = [
-          "A",
-          "B",
-          "C",
-          "D",
-          "E",
-          "F",
-          "G",
-          "H",
-          "I",
-          "J",
-          "K",
-          "L",
-          "M",
-          "N",
-          "O",
-          "P",
-          "Q",
-          "R",
-          "S",
-          "T",
-          "U",
-          "V",
-          "W",
-          "X",
-          "Y",
-          "Z",
-        ];
-        var specialCharacters = [
-          "!",
-          '""',
-          "#",
-          "$",
-          "%",
-          "&",
-          "''",
-          "(",
-          ")",
-          "*",
-          "+",
-          ",",
-          "-",
-          ".",
-          "/",
-          ":",
-          ";",
-          "<",
-          ">",
-          "=",
-          "?",
-          "@",
-          "[",
-          "]",
-          "^",
-          "_",
-          "`",
-          "|",
-          "~",
-        ];
-        var choices = [];
-        // check for symbols to include
-        if (loCase) {
-          choices.push("l");
-        }
-        if (uCase) {
-          choices.push("u");
-        }
-        if (numbers) {
-          choices.push("n");
-        }
-        if (spChar) {
-          choices.push("s");
-        }
-        for (i = 0; i < parseInt(pLengIn); i++) {
-          //which character to use
-          var charNum = Math.floor(Math.random() * characters.length);
-          // which specialNum to use
-          var specialNUm = Math.floor(Math.random() * specialCharacters.length);
-          //Select the choice to use
-          var choice = Math.floor(Math.random() * choices.length);
+      }
+      numbers = confirm("would you like to include numbers?");
+      uCase = confirm("would you like to include upper case characters?");
+      loCase = confirm("would you like to include lower case characters?");
+      spChar = confirm("would you like to include special characters?");
+      var password = pgenerator(pLengIn, loCase, uCase, numbers, spChar);
+      document.getElementById("passBox").textContent = password;
+    };
+    var pgenerator = function (pLengIn, loCase, uCase, numbers, spChar) {
+      var password = "";
+      var characters = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      ];
+      var specialCharacters = [
+        "!",
+        '""',
+        "#",
+        "$",
+        "%",
+        "&",
+        "''",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        ":",
+        ";",
+        "<",
+        ">",
+        "=",
+        "?",
+        "@",
+        "[",
+        "]",
+        "^",
+        "_",
+        "`",
+        "|",
+        "~",
+      ];
+      var choices = [];
+      // check for symbols to include
+      if (loCase) {
+        choices.push("l");
+      }
+      if (uCase) {
+        choices.push("u");
+      }
+      if (numbers) {
+        choices.push("n");
+      }
+      if (spChar) {
+        choices.push("s");
+      }
+      for (i = 0; i < parseInt(pLengIn); i++) {
+        //which character to use
+        var charNum = Math.floor(Math.random() * characters.length);
+        // which specialNum to use
+        var specialNUm = Math.floor(Math.random() * specialCharacters.length);
+        //Select the choice to use
+        var choice = Math.floor(Math.random() * choices.length);
 
-          // Select the character according to the choice
-          if (choices[choice] === "l") {
-            password += characters[charNum].toLowerCase();
-          }
-          if (choices[choice] === "u") {
-            password += characters[charNum];
-          }
-          if (choices[choice] === "s") {
-            password += specialCharacters[specialNUm];
-          }
-          if (choices[choice] === "n") {
-            var num = Math.floor(Math.random() * 10);
-            password += num;
-          }
+        // Select the character according to the choice
+        if (choices[choice] === "l") {
+          password += characters[charNum].toLowerCase();
         }
-        return password;
-      };
+        if (choices[choice] === "u") {
+          password += characters[charNum];
+        }
+        if (choices[choice] === "s") {
+          password += specialCharacters[specialNUm];
+        }
+        if (choices[choice] === "n") {
+          var num = Math.floor(Math.random() * 10);
+          password += num;
+        }
+      }
+      return password;
+    };
 
       // *prompts for character types to include:
       // *upper case
@@ -152,6 +158,7 @@
       //   var num = Math.random();
       //   console.log(num);
       // }
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
